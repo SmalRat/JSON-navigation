@@ -1,17 +1,26 @@
 """
-Module for convenient navigation through the json file
+Module for convenient navigation through the json file.
 """
 import json
 
 
 def json_read(path):
+    """
+    Reads JSON file from the given path.
+    """
     with open(path, mode="r", encoding="utf-8") as file:
         res = json.load(file)
     return res
 
 
 def choice(obj, obj_path):
+    """
+    Responsible for the navigation through the JSON file.
+    """
     def direction_choice(container=True):
+        """
+        Gives user a choice, where to go.
+        """
         if container:
             while True:
                 print("Do you want to go up or down?")
@@ -32,11 +41,18 @@ def choice(obj, obj_path):
                     return response
 
     def enter_obj_path(obj, obj_path):
+        """
+        Function, which enters the object according to the path
+        """
         for key in obj_path:
             obj = obj[key]
         return obj
 
     def header():
+        """
+        Creates a header with a path
+        """
+
         head = "path: json -> " + str(type(obj))
         for key in obj_path:
             head += " -> " + str(key)
@@ -118,6 +134,9 @@ visit (int from 1 to " + length + ")"))
 
 
 def main():
+    """
+    Function which contains main program's cycle.
+    """
     path = input("Enter the file path: ")
     try:
         res = json_read(path)
