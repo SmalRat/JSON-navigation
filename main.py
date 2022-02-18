@@ -62,7 +62,7 @@ def choice(obj, obj_path):
         elif response == "D":
             try:
                 response = int(input("Enter the index of element you want to\
-                 visit (int from 1 to " + length + ")"))
+visit (int from 1 to " + length + ")"))
             except:
                 print("Incorrect input! Repeating...")
                 return obj, obj_path
@@ -117,8 +117,13 @@ def choice(obj, obj_path):
             return
 
 
-def main(path):
-    res = json_read(path)
+def main():
+    path = input("Enter the file path: ")
+    try:
+        res = json_read(path)
+    except:
+        print("There is no such file! Exiting...")
+        return
     obj_path = []
     while True:
         print("-" * 100)
@@ -129,4 +134,4 @@ def main(path):
 
 
 if __name__ == "__main__":
-    main("twitter1.json")
+    main()
